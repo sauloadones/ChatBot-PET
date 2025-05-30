@@ -10,11 +10,13 @@ jobs:
     runs-on: self-hosted  # Executa no seu runner na cloud
     environment: TELEGRAM_BOT_TOKEN
     steps:
+      - name: Usuario permissao
+        run: chown -R $USER:$USER .
+
       - name: Checar repositório
         uses: actions/checkout@v3
       
-      - name: Usuario permissao
-        run: chown -R $USER:$USER .
+      
 
       - name: Testar acesso ao Docker
         run: docker ps
