@@ -280,13 +280,22 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     elif query.data == "cancelar_pedido":
         await query.answer("Pedido cancelado.", show_alert=True)
+
+        
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
             text="❌ Pedido cancelado. Você pode iniciar um novo quando quiser."
         )
+
      
-        context.user_data["pedido_livre"] = set()
-        limpar_sessao_usuario(context) 
+        context.user_data.clear() 
+        
+      
+        context.user_data["pedido_livre"] = set()  
+
+       
+        limpar_sessao_usuario(context)
+
     elif query.data == "finalizar_pedido":
         pedido = context.user_data.get("pedido_promo", set())
         promocao = context.user_data.get("promo_ativa", {})

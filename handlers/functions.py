@@ -279,17 +279,12 @@ async def gerenciar_primeira_interacao(update: Update, context: ContextTypes.DEF
         await start(update, context)
     else:
         await responder(update, context)
-
-def limpar_sessao_usuario(context):
-    keys = [
-        "esperando_endereco",
-        "pedido_promo",
-        "pedido_livre",
-        "forma_pagamento",
-        "tipo_pedido",
-        "endereco"
+def limpar_sessao_usuario(context: ContextTypes.DEFAULT_TYPE):
+    keys_para_remover = [
+        "pedido_livre", "pedido_promo", "forma_pagamento", "esperando_endereco",
+        "tipo_pedido", "endereco", "ja_iniciou"
     ]
-    for key in keys:
+    for key in keys_para_remover:
         context.user_data.pop(key, None)
 
 
