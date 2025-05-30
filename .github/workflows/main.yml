@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted  # Executa no seu runner na cloud
-
+    environment: TELEGRAM_BOT_TOKEN
     steps:
       - name: Checar repositório
         uses: actions/checkout@v3
@@ -17,8 +17,8 @@ jobs:
         run: docker ps
       
       - name: Criar arquivo .env
-        run: echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" > .env
-      - name: Verificar se o token foi carregado (sem mostrar valor)
+        env:  
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}" > .env
         run: |
           if [ -z "${{ secrets.TELEGRAM_BOT_TOKEN }}" ]; then
             echo "❌ TELEGRAM_BOT_TOKEN não está definido!"
