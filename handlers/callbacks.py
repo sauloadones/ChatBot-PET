@@ -75,7 +75,8 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [
             InlineKeyboardButton("Quero a promoção", callback_data="escolher_promocao"),
             InlineKeyboardButton("Montar meu pedido", callback_data="montar_pedido")
-        ]
+        ],
+            [InlineKeyboardButton("❌ Cancelar Pedido", callback_data="cancelar_pedido")]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
         with open(imagem_cardapio, 'rb') as f:
@@ -279,12 +280,13 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     elif query.data == "cancelar_pedido":
         await query.answer("Pedido cancelado.", show_alert=True)
-        limpar_sessao_usuario(context)
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
             text="❌ Pedido cancelado. Você pode iniciar um novo quando quiser."
         )
-        context.user_data["pedido_livre"] = set()  
+     
+        context.user_data["pedido_livre"] = set()
+        limpar_sessao_usuario(context) 
     elif query.data == "finalizar_pedido":
         pedido = context.user_data.get("pedido_promo", set())
         promocao = context.user_data.get("promo_ativa", {})
@@ -336,6 +338,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [InlineKeyboardButton("💸 PIX", callback_data="pagamento_pix")],
             [InlineKeyboardButton("💵 Dinheiro", callback_data="pagamento_dinheiro")],
             [InlineKeyboardButton("💳 Cartão de Crédito", callback_data="pagamento_cartao")]
+            [InlineKeyboardButton("❌ Cancelar Pedido", callback_data="cancelar_pedido")]
         ])
 
         await context.bot.send_message(
