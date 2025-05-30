@@ -25,7 +25,7 @@ jobs:
             exit 1
           else
             echo "✅ TELEGRAM_BOT_TOKEN foi carregado com sucesso!"
-            echo "TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN > .env
+            echo "TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN" > .env
           fi
 
       - name: Subir containers
