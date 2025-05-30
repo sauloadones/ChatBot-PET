@@ -18,7 +18,7 @@ jobs:
       
       - name: Criar arquivo .env
         env:  
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}" > .env
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
           if [ -z "${{ secrets.TELEGRAM_BOT_TOKEN }}" ]; then
             echo "❌ TELEGRAM_BOT_TOKEN não está definido!"
