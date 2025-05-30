@@ -12,13 +12,15 @@ jobs:
     steps:
       - name: Checar repositório
         uses: actions/checkout@v3
+      
+      - name: Criar arquivo .env
+        run: |
+          echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" > .env
 
       - name: Subir containers
         run: |
           docker compose down
           docker compose build --no-cache
           docker compose up -d
-      - name: Criar arquivo .env
-        run: |
-          echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" > .env
+     
           
