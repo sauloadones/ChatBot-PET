@@ -101,8 +101,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "quantidade_pizzas": 1,
                  "preco": 39.90,
                 "quantidade_refrigerantes": 1,
-                "categorias_permitidas": ["tradicionais", "BEBIDAS PROMOCAO 1L"],
-               
+                "categorias_permitidas": ["tradicionais", "BEBIDAS PROMOCAO 1L"]
             },
             "tuesday": {
                 "descricao": "Combo Pizza grande + brotinho de chocolate + 1 Refrigerante 1 litro, Por apenas $49,90!",
@@ -110,7 +109,6 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "quantidade_pizzas": 1,
                 "quantidade_refrigerantes": 1,
                 "categorias_permitidas": ["tradicionais","BEBIDAS PROMOCAO 1L"]
-              
             },
             "wednesday": {
                 "descricao": "Combo Individual Pizza brotinho + 1 Coca-lata, Por apenas $19,90!",
@@ -118,7 +116,6 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "quantidade_pizzas": 1,
                 "quantidade_refrigerantes": 1,
                 "categorias_permitidas": ["tradicionais","doces", "BEBIDAS PROMOCAO LATA"]
-            
             },
             "thursday": {
                 "descricao": "2 Pizzas Grandes + 1 Refrigerante 1 litro por R$79,90",
@@ -126,7 +123,6 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "quantidade_pizzas": 2,
                 "quantidade_refrigerantes": 1,
                 "categorias_permitidas": ["tradicionais", "doces", "BEBIDAS PROMOCAO 1L"]
-             
             },
              "friday": {
                 "descricao": "Combo Família 3 Pizzas Grandes + Refrigerante 2 litros, Por apenas $100,00",
@@ -134,14 +130,12 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "quantidade_pizzas": 3,
                 "quantidade_refrigerantes": 1,
                 "categorias_permitidas": ["tradicionais", "doces", "BEBIDAS PROMOCAO 2L"]
-          
              },
              "saturday": {
                 "descricao": "Combo Especial Sabores Especiais + Refrigerante 1 litro, Por apenas $50,00!",
                  "preco": 50.90,
                 "quantidade_pizzas": 1,
                 "categorias_permitidas": ["especiais", "BEBIDAS PROMOCAO 1L" ]
-                
              }
         }
         dia = datetime.now().strftime("%A").lower()
@@ -213,7 +207,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         texto_msg = (
             f"🍕 Promoção ativa: *{promocao['descricao']}*\n\n"
             f"Selecione até:\n"
-            f"{promocao[]}"
+            f"2 Pizzas e 1 Refrigerante da sua preferencia"
             
         )
         await safe_edit_message_text(query, texto_msg, reply_markup=reply_markup, parse_mode="Markdown")
