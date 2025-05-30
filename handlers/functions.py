@@ -287,4 +287,5 @@ def limpar_sessao_usuario(context: ContextTypes.DEFAULT_TYPE):
     for key in keys_para_remover:
         context.user_data.pop(key, None)
 
-
+def limpar_sessao(context):
+    context.user_data.clear()
