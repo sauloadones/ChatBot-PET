@@ -13,6 +13,9 @@ jobs:
       - name: Checar repositório
         uses: actions/checkout@v3
       
+      - name: Testar acesso ao Docker
+        run: docker ps
+      
       - name: Criar arquivo .env
         run: |
           echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" > .env
