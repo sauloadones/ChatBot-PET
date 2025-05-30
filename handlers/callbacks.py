@@ -279,6 +279,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     elif query.data == "cancelar_pedido":
         await query.answer("Pedido cancelado.", show_alert=True)
+        limpar_sessao_usuario(context)
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
             text="❌ Pedido cancelado. Você pode iniciar um novo quando quiser."
@@ -362,3 +363,5 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             text="📍 *Informe o endereço para entrega:*",
             parse_mode="Markdown"
         )
+        await update.message.reply_text(texto, parse_mode="Markdown")
+        limpar_sessao_usuario(context)
