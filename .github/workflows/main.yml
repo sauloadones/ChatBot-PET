@@ -17,8 +17,15 @@ jobs:
         run: docker ps
       
       - name: Criar arquivo .env
+        run: echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" > .env
+      - name: Verificar se o token foi carregado (sem mostrar valor)
         run: |
-          echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" > .env
+          if [ -z "${{ secrets.TELEGRAM_BOT_TOKEN }}" ]; then
+            echo "❌ TELEGRAM_BOT_TOKEN não está definido!"
+            exit 1
+          else
+            echo "✅ TELEGRAM_BOT_TOKEN foi carregado com sucesso!"
+          fi
 
       - name: Subir containers
         run: |
