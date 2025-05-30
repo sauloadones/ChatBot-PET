@@ -6,6 +6,7 @@ from telegram.ext import ContextTypes
 
 
 async def responder(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    from handlers.functions import limpar_sessao, start
     texto = update.message.text.strip()
 
     if context.user_data.get("esperando_endereco"):
@@ -29,7 +30,7 @@ async def responder(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await start(update, context)
 
     else:
-        from handlers.functions import limpar_sessao, start
+     
         # Qualquer nova mensagem fora do fluxo de pedido reinicia a conversa
         limpar_sessao(context)
         await update.message.reply_text(
