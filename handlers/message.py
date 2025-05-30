@@ -26,6 +26,7 @@ async def responder(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         limpar_sessao_usuario(context)
 
+        await start(update, context)
     else:
         # Caso o bot não esteja esperando um endereço
         await update.message.reply_text(f"📨 Você disse: {texto}")
