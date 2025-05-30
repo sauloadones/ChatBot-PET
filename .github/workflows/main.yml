@@ -1,4 +1,4 @@
-name: Deploy Docker Compose
+name: Deploy automático do Bot
 
 on:
   push:
@@ -7,11 +7,16 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted  # Executa no seu runner na cloud
 
     steps:
-      - name: Acessar servidor e subir containers
+      - name: Checar repositório
+        uses: actions/checkout@v3
+
+      - name: Subir containers
         run: |
-            docker-compose pull &&
-            docker-compose up -d --build
+          docker-compose down
+          docker-compose build --no-cache
+          docker-compose up -d
+
           
