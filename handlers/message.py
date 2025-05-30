@@ -27,7 +27,7 @@ async def responder(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         await update.message.reply_text(mensagem, parse_mode="Markdown")
         limpar_sessao(context)
-        await start(update, context)
+        
 
     else:
      
