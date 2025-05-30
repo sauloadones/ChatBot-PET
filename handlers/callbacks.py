@@ -207,7 +207,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         texto_msg = (
             f"🍕 Promoção ativa: *{promocao['descricao']}*\n\n"
             f"Selecione até:\n"
-            f"*{promocao['quantidade_pizzas']}* sabor(es) de pizzas, e {promocao['quantidade_refregentes']} refrigerante"
+            f"*{promocao['quantidade_pizzas']}* sabor(es) de pizzas, e {promocao['quantidade_refrigerantes']} refrigerante"
             
         )
         await safe_edit_message_text(query, texto_msg, reply_markup=reply_markup, parse_mode="Markdown")
